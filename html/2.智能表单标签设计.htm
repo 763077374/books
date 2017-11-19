@@ -1,0 +1,55 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+    <body>
+        <h3></h3>
+        <hr />
+        <form action="/home/index" method="POST" id="frmdemo">
+            
+            <input type="color" name="myColor" />
+            
+            <h3>日期</h3>
+            <input type="date" name="now" />
+            
+            <p><h3>datalist</h3>
+                <input type="text" name="txtDataList" list="nameList" />
+                <datalist id="nameList">
+                    <option lable="杨中科" value="1" >杨中科</option>
+                    <option lable="老苏" value="2" >老苏</option>
+                </datalist>
+            </p>
+            
+            <h3>placeholder</h3>
+            <input type="text" name="placeholder" placeholder="demo 提示" />
+           
+            <h3>自动完成</h3>
+            <input type="text" autocomplete="on" name="demoAutoComplete" list="autoNames" />
+                <datalist id="autoNames">
+                    <option  value="小杨" >杨中科</option>
+                    <option  value="扬中科1" >老苏</option>
+                    <option  value="扬中科2" >老苏</option>
+                    <option  value="扬中科3" >老苏</option>
+                </datalist>
+            
+            <Hr />
+            <h3>智能化的input</h3>
+            url:<input type="url" name="url" /><br />
+            
+            email:<input type="email" name="email" /><br />
+            time:<input type="time" name="time" required /><br />
+            number:<input  type="number" value="2" name="number" step="3"/><br />
+            ranger:<input type="range" min="0" max="50" step="5" name="rangedemo" value="0" />
+            ouput:<output onforminput="value=rangedemo.value">0</output>
+            progressbar:<progress id="pbar" value="30" name="pbar"  max="100"><span>%</span></progress>
+            <input type="button" value="设置值" onclick="document.getElementById('pbar').value +=1;" />
+            <hr />
+            <input type="submit" value="提交" />
+        </form>
+        
+        <input form="frmdemo" type="text" name="demoOtherForm" autofocus="autofocus" />
+
+    </body>
+</html>

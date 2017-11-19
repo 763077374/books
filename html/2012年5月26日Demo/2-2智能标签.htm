@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        
+           
+        
+    </head>
+    <body>
+        
+        <h1>只能表达标签</h1>
+        <form id="demo">
+            <input type="datetime" name="date" required/>
+            <input type="email" placeholder="这里填写邮箱"/>
+            
+            <input type="color"/>
+            
+            <input type="number" min="4" value="4" step="2"/>
+            
+            <input type="range" min="0" max="100" step="5" value="0" name="range"/>
+            
+            <output onforminput="value=range.value"></output>
+            <input type="email" required/>
+            <hr/>
+            <progress value="10" min="0" max="100" onclick="this.value+=5;"></progress>
+            
+            <input type="text" pattern="\d+" required/>
+            <input type="submit" value=" 提交"/>
+            
+            <hr/>
+
+            <input type="text" list="data"/>
+
+            <datalist id="data">
+                <option value="天津"></option>
+                <option value="上海"></option>
+                <option value="西红柿"></option>
+            </datalist>
+
+        </form>
+
+        <input type="submit" form="demo"/>
+    </body>
+</html>

@@ -1,0 +1,1987 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0034)http://directguo.com/html5/ -->
+<!DOCTYPE html><!-- 
+  Copyright 2010 Google Inc.
+  All rights reserved.
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+--><HTML manifest="/html5/src/slides_manifest.php"><HEAD><TITLE>HTML5 
+演示</TITLE>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+<META name="description" content="这是一个HTML5新功能演示文档。">
+<META name="keywords" content="HTML5,演示,HTML5演示,CSS3">
+<SCRIPT src="HTML5%20演示_files/jsapi.js"></SCRIPT>
+
+<SCRIPT>google.load("maps", "2");</SCRIPT>
+
+<SCRIPT type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type="text/javascript"> 
+try {
+var pageTracker = _gat._getTracker("UA-8522782-1");
+pageTracker._setDomainName(".directguo.com");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+<!-- <link type="text/css" href="./src/scrollbar.css" rel="stylesheet"> -->
+<STYLE>
+      .notes { display: none; }
+      .stroke {
+        -webkit-text-stroke-color: red;
+        -webkit-text-stroke-width: 1px;
+        -moz-text-stroke-color: red;
+        -moz-text-stroke-width: 1px;
+      }
+      
+      body {
+        font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+        background: #778;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      
+      div.presentation {
+        position: absolute;
+        width: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        background: inherit;
+      }
+      
+      div.slides {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        left: 0;
+        top: 0;
+        position: absolute;
+        display: block;  
+        -webkit-transition: -webkit-transform 2s ease-in-out; 
+        -moz-transition: -moz-transform 2s ease-in-out; 
+      }
+
+      div.slide {
+        display: none;
+        position: absolute;
+        overflow: hidden;
+        width: 900px;
+        height: 700px;
+        left: 50%;
+        top: 50%;
+        margin-top: -350px;
+        background: -webkit-gradient(linear, left bottom, left top, from(#bbd), to(#fff));
+        -webkit-transition: margin 0.25s ease-in-out; 
+        background-color: #eee;
+        background: -moz-linear-gradient(left bottom, #bbd, #fff);
+        -moz-transition: margin 0.25s ease-in-out;         
+      }
+      
+      div.slide:nth-child(even) {
+        border-top-left-radius: 20px;
+        -moz-border-radius-topleft: 20px;
+        border-bottom-right-radius: 20px;
+        -moz-border-radius-bottomright: 20px;
+      }
+      
+      div.slide:nth-child(odd) {
+        border-top-right-radius: 20px;
+        -moz-border-radius-topright: 20px;
+        border-bottom-left-radius: 20px;
+        -moz-border-radius-bottomleft: 20px;
+      }
+
+      div.slide p {
+        font-size: 20px;
+      }
+
+      section.intro p {
+        font-size: 35px;
+      }
+
+      button {
+        font-size: 20px;
+      }
+      
+      .summary {
+       font-size: 30px;
+      }
+
+      .bullets {
+       font-size: 40px;
+      }
+      
+      .slide.far-past {
+        display: block;
+        margin-left: -2400px;
+      }
+      
+      .slide.past {
+        display: block;
+        margin-left: -1400px;
+      }
+      
+      .slide.current {
+        display: block;
+        margin-left: -450px;
+      }
+      
+      .slide.future {
+        display: block;
+        margin-left: 500px;
+      }
+      
+      .slide.far-future {
+        display: block;
+        margin-left: 1500px;
+      }
+
+      body.three-d div.presentation {
+        /*background: -webkit-gradient(radial, 50% 50%, 10, 50% 50%, 1000, from(#333), to(#000));        */        
+      }
+      
+      body.three-d div.slides {
+        -webkit-transform: translateX(50px) scale(0.8) rotateY(10deg);        
+        -moz-transform: translateX(50px) scale(0.8) rotateY(10deg);        
+      }
+      
+      
+      /* Content */
+      
+      @font-face { font-family: 'Junction'; src: url(src/Junction02.otf); }
+      @font-face { font-family: 'LeagueGothic'; src: url(src/LeagueGothic.otf); }
+      
+      header {
+        font-family: 'Junction';
+        font-weight: normal;
+        font-size: 50px;
+        letter-spacing: -.05em;
+        color: white;        
+        color: black;
+        text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;  
+        position: absolute;
+        left: 30px;
+        top: 25px;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .intro h1 {
+        color: black;
+        padding: 0;
+        margin: 0;
+        letter-spacing: -2px;
+        font-size: 96px;
+      }
+      
+      .intro h2 {
+        color: black;
+        font-family: 'LeagueGothic';
+        padding: 0;
+        margin: 0;
+        margin-top: -5px;
+        font-size: 68px;
+        letter-spacing: -1px;  
+      }
+      
+      h1 {
+        display: inline;
+        font-size: 70%;
+      	font-weight: normal;
+      	padding: 0;
+      	margin: 0;
+      }
+      
+      h2 {
+        font-family: 'Junction';
+        color: black;
+        font-size: 20px;
+        margin-left: 20px;
+        margin-top: 50px;
+      }
+      
+      h2:first-child {
+        margin-top: 0;
+      }
+
+      section {
+        font-family: 'Junction';
+        font-size: 50px;
+        color: #3f3f3f;
+        text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;         
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 100px;
+        display: block;
+        overflow: hidden;
+      }
+
+      a {
+        color: inherit;
+        display: inline-block;
+        text-decoration: none;
+        line-height: 110%;
+        border-bottom: 2px solid #3f3f3f;
+      }
+
+      #wmap a {
+        line-height: 100%;
+        border-bottom: none;
+      }
+      
+      section.left {
+        float: left;
+        width: 390px;
+      }
+      
+      section.small {
+        font-size: 24px;
+      }
+      
+      section.small ul {
+        margin: 0 0 0 15px;
+        padding: 0;
+      }
+      
+      section.small li {
+        padding-bottom: 0;
+      }
+      
+      h2 {
+        padding: 0;
+        margin: 15px 0 5px 0;
+/*        font-family: GG240;*/
+      }
+      
+      section.center {
+        line-height: 180%;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        height: 700px;
+        width: 900px;
+      }
+      
+      pre {
+        text-align: left;
+        font-size: 16px;
+        font-family: Monaco, Courier;
+        padding-bottom: 10px;
+        
+        padding: 10px 20px;
+        background: rgba(255, 0, 0, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 0, 0, 0.2);
+      }
+      .two-column {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+      }
+      
+      pre select {
+        font-size: 16px;
+        font-family: Monaco, Courier;
+        border: 1px solid #c61800;        
+      }
+        
+      input {
+        font-size: 16px;
+        font-family: Helvetica;
+        padding: 3px;
+      }
+      input[type="range"] {
+        width: 100%;
+      }
+      
+      button {
+        font-family: Verdana;
+      }
+      
+      button.large {
+        font-size: 32px;        
+      }
+        
+      pre b {
+        font-weight: normal;
+        color: #c61800;
+        text-shadow: #c61800 0 0 1px; 
+        /*letter-spacing: -1px;*/
+      }
+      pre em {
+        font-weight: normal;
+        font-style: normal;
+        color: #18a600;
+        text-shadow: #18a600 0 0 1px; 
+      }
+      pre input[type="range"] {
+        height: 6px;
+        cursor: pointer;
+        width: auto;
+      }      
+      example {
+        font-size: 16px;
+        display: block;
+        padding: 10px 20px;
+        color: black;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      video {
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.2);        
+      }
+      
+      .css,
+      .js,
+      .html,
+      .key {
+        font-family: 'Junction';
+        color: black;
+        display: inline-block;
+        padding: 6px 10px 3px 10px;
+        font-size: 25px;
+        line-height: 30px;
+        text-shadow: none;
+        letter-spacing: 0;
+        bottom: 10px;
+        position: relative;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px; 
+        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px; 
+        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px; 
+      }
+      :not(header) > .css,
+      :not(header) > .js,
+      :not(header) > .html,
+      :not(header) > .key {
+        margin: 0 5px;
+        bottom: 4px;
+      }
+      
+      .css {
+        background: -webkit-gradient(linear, left top, left bottom, from(#ff4), to(#ffa));
+        background-color: #ff4;
+        background: -moz-linear-gradient(left top, #ff4, #ffa);        
+      }
+      .js {
+        background: -webkit-gradient(linear, left top, left bottom, from(#4f4), to(#afa));        
+        background-color: #4f4;
+        background: -moz-linear-gradient(left top, #4f4, #afa);
+      }
+      .html {
+        background: -webkit-gradient(linear, left top, left bottom, from(#e88), to(#fee));
+        background-color: #e88;
+        background: -moz-linear-gradient(left top, #e88, #fee);
+      }
+      
+      li {
+        list-style: none;
+        padding: 10px 0;
+      }
+      
+      .summary li::before, .bullets li::before {
+        content: '· ';
+      }
+      
+      info {
+        display: block;
+        font-size: 50%;
+        text-align: center;
+      }
+      
+    </STYLE>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<DIV class="presentation">
+<DIV class="slides">
+<DIV class="slide"><SECTION class="center intro">
+<P>本演示文档是一个HTML5的站点</P>
+<P>按 <SPAN class="key">→</SPAN> 键 进入下一页	</P>
+<P>放大/缩小: <SPAN class="key">Ctrl</SPAN> + <SPAN class="key">+/-</SPAN></P>
+<P style="font-size: 25px;">请使用<A href="http://www.google.com/chrome/">Google 
+Chrome</A>浏览。阅读 <A 
+href="http://directguo.com/html5/disclaimer.html">免责声明</A>。欢迎<A href="http://directguo.com/blog/index.php/2010/04/html5presentation/" 
+target="_blank">留言</A>。</P></SECTION></DIV>
+<DIV class="slide"><SECTION class="center intro"><HGROUP>
+<H1>HTML5*              </H1>
+<H2>                Web 开发进入新时代              </H2></HGROUP>
+<P style="font-size: 16px;">*包括另外一些新一代网络开发技术</P></SECTION></DIV>
+<DIV class="slide"><HEADER>Web技术大致的时间轴</HEADER><SECTION>
+<STYLE>span.year {
+                display: inline-block;
+                text-align: right;
+                width: 120px;
+                letter-spacing: -2px;
+                padding-right: 10px;
+              }
+              hr {
+                visibility: hidden;
+                padding: 0;
+                margin: 0 0 -20px 0;
+              }
+            </STYLE>
+
+<UL><SPAN class="year">1991</SPAN> <SPAN class="html">HTML</SPAN><BR><SPAN 
+  class="year">1994</SPAN> <SPAN class="html">HTML 2</SPAN><BR><SPAN class="year">1996</SPAN> 
+  <SPAN class="css">CSS 1</SPAN> + <SPAN class="js">JavaScript</SPAN><BR><SPAN 
+  class="year">1997</SPAN> <SPAN class="html">HTML 4</SPAN><BR><SPAN class="year">1998</SPAN> 
+  <SPAN class="css">CSS 2</SPAN><BR><SPAN class="year">2000</SPAN> <SPAN class="html">XHTML 
+  1</SPAN><BR><SPAN class="year"><EM class="stroke">2002</EM></SPAN> <SPAN 
+  class="css">使用DIV+CSS进行网页布局</SPAN><BR><SPAN class="year"><EM 
+  class="stroke">2005</EM></SPAN> <SPAN class="js">AJAX</SPAN><BR><SPAN class="year"><EM 
+  class="stroke">2009</EM></SPAN> <SPAN class="html">HTML 
+5</SPAN></UL></SECTION></DIV>
+<DIV class="slide"><SECTION class="center">            HTML5 ~=            <SPAN 
+class="html">HTML</SPAN>            +            <SPAN class="css">CSS</SPAN>    
+        +            <SPAN class="js">JS APIs</SPAN></SECTION></DIV>
+<DIV class="slide"><SECTION class="center">
+<H1><SPAN class="js">JS APIs</SPAN></H1></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>新的选择器</H1></HEADER><SECTION>
+<H2>               通过 class 定位元素 (DOM API)            </H2><PRE>var el = document.getElementById('section1');
+el.focus();
+
+var els = document.getElementsByTagName('div');
+els[0].focus();
+
+var els = document.<B>getElementsByClassName</B>('section');
+els[0].focus();</PRE>
+<H2>通过类似 css 选择器的语法定位元素 (Selectors API)            </H2><PRE>var els = document.<B>querySelectorAll</B>("ul li:nth-child(odd)");
+var els = document.<B>querySelectorAll</B>("table.test &gt; tr &gt; td");
+</PRE></SECTION></DIV>
+<DIV class="slide">
+<STYLE type="text/css" media="screen">
+            #ta { width: 300px; height: 150px; }            
+          </STYLE>
+<HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>本地储存 - Web Storage </H1></HEADER><SECTION><PRE>// use localStorage for persistent storage
+// use sessionStorage for per tab storage
+textarea.addEventListener('keyup', function () {
+  window.<B>localStorage</B>['value'] = area.value;
+  window.<B>localStorage</B>['timestamp'] = (new Date()).getTime();
+}, false);
+textarea.value = window.<B>localStorage</B>['value'];
+</PRE>
+<BR>
+<P>例子: 在客户端保存Email草稿 ,即使浏览器崩溃了数据也不会丢失。</P><TEXTAREA id="ta"></TEXTAREA><!-- <div id="ta_log"></div> -->
+<SCRIPT type="text/javascript" charset="utf-8">
+  var area = document.querySelector('#ta');
+  // place content from previous edit
+  if (!area.value) {
+    area.value = window.localStorage.getItem('value');
+  }
+
+  // your content will be saved locally
+  area.addEventListener('keyup', function () {
+    window.localStorage.setItem('value', area.value);
+    window.localStorage.setItem('timestamp', (new Date()).getTime());
+  }, false);
+
+  // updateLog();
+  // setInterval(updateLog, 5000); // show time every 5 seconds
+
+  function updateLog() {
+    var delta = 0;
+    if (window.localStorage.getItem('value')) {
+      delta = ((new Date()).getTime() - (new Date()).setTime(window.localStorage.getItem('timestamp'))) / 1000;
+      document.querySelector("#ta_log").innerHTML = 'last saved: ' + delta + 's ago';
+    } 
+    else {
+      area.value = 'Type your text here...';
+    }
+  }
+  
+</SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>本地数据库 - Web SQL Database</H1></HEADER><SECTION><PRE>var db = window.<B>openDatabase</B>("Database Name", "Database Version");
+db.<B>transaction</B>(function(tx) {
+  tx.<B>executeSql</B>(<EM>"SELECT * FROM test"</EM>, [], successCallback, errorCallback);
+});
+</PRE>
+<DIV style="text-align: center;">
+<STYLE>
+.record-list li:nth-child(odd) { background-color: #eee; }
+.record-list li:nth-child(even) { background-color: #ddd; }
+#db_results { font-size: 20px; max-height: 150px; overflow: auto; text-align: left; }
+</STYLE>
+
+<UL id="db_results" class="record-list"></UL>
+<DIV id="db-log"></DIV><INPUT id="todoitem" type="text"><BUTTON onclick="newRecord()">新建记录</BUTTON>
+<BUTTON onclick="createTable()">建立数据表</BUTTON><BUTTON 
+onclick="dropTable()">删除数据表</BUTTON>
+<P>Chrome中查看生成的数据库: 开发人员 &gt; 开发人员工具 &gt; Storage</P></DIV>
+<SCRIPT>
+var db;
+var log = document.getElementById('db-log');
+db = openDatabase("DBTest", "1.0", "HTML5 Database API example", 200000);
+showRecords();
+document.getElementById('db_results').addEventListener('click', function(e) { e.preventDefault(); }, false);
+
+function onError(tx, error) {
+  log.innerHTML += '<p>' + error.message + '</p>';
+}
+
+// select all records and display them
+function showRecords() {
+  document.getElementById('db_results').innerHTML = '';
+  db.transaction(function(tx) {
+    tx.executeSql("SELECT * FROM Table1Test", [], function(tx, result) {
+      for (var i = 0, item = null; i < result.rows.length; i++) {
+        item = result.rows.item(i);
+        document.getElementById('db_results').innerHTML += 
+            '<li><span contenteditable="true" onkeyup="updateRecord('+item['id']+', this)">'+
+            item['text'] + '</span> <a href="#" onclick="deleteRecord('+item['id']+')">[Delete]</a></li>';
+      }
+    });
+  });
+}
+
+function createTable() {
+  db.transaction(function(tx) {
+    tx.executeSql("CREATE TABLE Table1Test (id REAL UNIQUE, text TEXT)", [],
+        function(tx) {  log.innerHTML = '<p>Table1Test created!</p>' },
+        onError);
+  });
+}
+
+// add record with random values
+function newRecord() {
+  var num = Math.round(Math.random() * 10000); // random data
+  db.transaction(function(tx) {
+    tx.executeSql("INSERT INTO Table1Test (id, text) VALUES (?, ?)", [num, document.querySelector('#todoitem').value],
+        function(tx, result) {
+          log.innerHTML = '';
+          showRecords();
+        }, 
+        onError);
+  });
+}
+
+function updateRecord(id, textEl) {
+  db.transaction(function(tx) {
+    tx.executeSql("UPDATE Table1Test SET text = ? WHERE id = ?", [textEl.innerHTML, id], null, onError);
+  });
+}
+
+function deleteRecord(id) {
+  db.transaction(function(tx) {
+    tx.executeSql("DELETE FROM Table1Test WHERE id=?", [id],
+        function(tx, result) { showRecords() }, 
+        onError);
+  });
+}
+
+// delete table from db
+function dropTable() {
+  db.transaction(function(tx) {
+    tx.executeSql("DROP TABLE Table1Test", [],
+        function(tx) { showRecords() }, 
+        onError);
+  });
+}
+
+</SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>文件缓存 - Application Cache API</H1></HEADER><SECTION><PRE>&lt;html <B>manifest="cache-manifest"</B>&gt;
+window.<B>applicationCache</B>.addEventListener(<EM>'checking'</EM>, updateCacheStatus, false);
+</PRE><PRE>CACHE MANIFEST
+
+# version 1
+
+CACHE:
+/html5/src/refresh.png
+/html5/src/logic.js
+/html5/src/style.css
+/html5/src/background.png
+</PRE>
+<P style="text-align: center; padding-top: 20px;">试试断开你的网络连接，然后刷新! <IMG src="HTML5%20演示_files/refresh.png"></P></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>让程序在后台运行 - Web Workers</H1></HEADER><SECTION><PRE>main.js:
+  var worker = new <B>Worker</B>(‘extra_work.js');
+  worker.<B>onmessage</B> = function (event) { alert(event.data); }; 
+
+extra_work.js:
+  // do some work; when done post message.
+  <B>postMessage</B>(some_data);
+</PRE>
+<SCRIPT type="text/javascript" charset="utf-8" src="HTML5%20演示_files/points.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" charset="utf-8" src="HTML5%20演示_files/annealing.js"></SCRIPT>
+<!-- <input type="button" value="Find primes with Workers" onClick="findPrimesYes()"> 
+<input type="button" value="Find primes without Workers (it will freeze your browser)" onClick="findPrimesNo()"> 
+The highest prime number discovered so far is: <div id="result"></div>
+<script type="text/javascript"> 
+ 
+function findPrimesNo() {
+var n = 1;
+search: while (true) {
+  n += 1;
+  for (var i = 2; i <= Math.sqrt(n); i += 1)
+    if (n % i == 0)
+  document.getElementById('result').textContent = n;
+     continue search;
+  // found a prime!
+}
+}
+
+function findPrimesYes() {
+  var worker = new Worker('/html5/src/webworkers/prime.js');
+   worker.onmessage = function (event) {
+     document.getElementById('result').textContent = event.data;
+   };
+}
+</script> -->
+<DIV id="w_wrapper">
+<DIV style="height: 200px;" id="wmap"></DIV><!-- <div style="position: absolute; top: 20px; left: 200px;" id="groundContainer"></div> --><BUTTON 
+id="find_route_y">用Workers查询航线</BUTTON><BUTTON 
+id="find_route_n">不用Workers查询航线</BUTTON>
+<P style="color: white; display: inline; visibility: hidden; background-color: red;" 
+id="w_loading">Loading Route...</P>
+<P>试着在计算航线时拖动地图 (只有在使用Worker计算时，浏览器不会假死)</P></DIV>
+<SCRIPT>window.onload = function() {
+          workermap = new GMap2(document.getElementById("wmap"));
+          workermap.setCenter(new GLatLng(13, 13), 4);
+          drawPoints();
+        
+          document.querySelector('#w_wrapper').addEventListener('click', function(event) {
+            if (event.target.id == 'find_route_y') {
+              useThreads = true;
+              document.getElementById('w_loading').style.visibility = 'visible'
+              test()    
+                    
+            }
+            else if (event.target.id == 'find_route_n'){
+              useThreads = false;
+              document.getElementById('w_loading').style.visibility = 'visible'
+              test()            
+            }
+            // useThreads = document.getElementById("worker").checked;
+
+          }, false);
+        }
+        
+        function drawPath(path) {
+          var firstPoint = true;
+          var l = p1.length;
+          for (var i = 0; i < l - 1; i++) {
+            var polyline = new GPolyline([new GLatLng(p1[i].x/5, p1[i].y/5), new GLatLng(p1[i+1].x/5, p1[i+1].y/5)], "#ff0000", 1);
+            workermap.addOverlay(polyline);
+          }
+        }
+        
+        function drawPoints() {
+          var blueIcon = new GIcon(G_DEFAULT_ICON);
+          blueIcon.image = "http://directguo.com/html5/src/webworkers/point.png";
+          blueIcon.iconSize = new GSize(3, 3);
+          blueIcon.iconAnchor = new GPoint(0, 0);    
+          blueIcon.shadow = null;
+          // Set up our GMarkerOptions object
+          markerOptions = { icon:blueIcon };
+
+          for (var i = 0; i < p1.length; i++) {
+            // Render in Gmap instead of canvas
+            var point = new GLatLng(p1[i].x/5, p1[i].y/5);
+            workermap.addOverlay(new GMarker(point, markerOptions));
+          }
+        }
+
+        function test() {
+          var name = "Test 1";
+          var self = this;
+          workermap.clearOverlays();
+          drawPoints();
+          setTimeout(function() {
+              var opts = {
+                points: p1,
+                t0: 1,
+                g: 0.99,
+                stepsPerT: 10
+              }
+              var callback = {
+                name: name,
+                newMin: function(p) {
+                },
+                draw: function(p) {
+                  document.getElementById('w_loading').style.visibility = 'hidden'
+                  drawPath(p);
+                }
+              };
+              var a;
+              if (useThreads) {
+                  var worker = new Worker('/html5/src/webworkers/Worker.js')
+                  worker.onmessage = function(event) {
+                      var returnedData = JSON.parse(event.data);
+                      var msg = returnedData[0];
+                      var p = returnedData[1];
+                      callback[msg](p);
+                  };
+                  worker.onerror = function(event) {
+                      console.log(event);
+                  };
+                  worker.postMessage(JSON.stringify({
+                          opts: opts,
+                          width: 200,
+                          height: 200
+                        }));
+
+              }
+              else {
+                var annealing = new Annealing();
+                  var callback2 = {
+                    onNewMin: function(p) {
+                      // postMessage('newmin')
+                    },
+                    onDone: function(p) {
+                      document.getElementById('w_loading').style.visibility = 'hidden';
+                      drawPath(p);
+                    }
+                  };
+                  annealing.init(opts, opts.width,
+                                opts.height, callback2)
+                  annealing.go();
+              }
+                // a = new Annealing();
+              // a.init(opts, 200, 200, listener);
+              // a.go();
+
+          }, 10);
+        }        
+        
+        </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>双向信息传输 - Web Sockets</H1></HEADER><SECTION><PRE>var socket = new <B>WebSocket</B>(location);
+socket.<B>onopen</B> = function(event) {
+  socket.<B>postMessage</B>(“Hello, WebSocket”);
+}
+socket.<B>onmessage</B> = function(event) { alert(event.data); }
+socket.<B>onclose</B> = function(event) { alert(“closed”); }
+
+</PRE>
+<P 
+style="padding: 20px; text-align: center;">允许Web服务器实时、主动的向浏览器发送信息(COMET)</P></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>桌面提醒 - Notifications</H1></HEADER><SECTION><PRE>if (window.<B>webkitNotifications</B>.<B>checkPermission</B>() == 0) {
+  // you can pass any url as a parameter
+  window.<B>webkitNotifications</B>.<B>createNotification</B>(tweet.picture, tweet.title, 
+      tweet.text).<B>show</B>(); 
+} else {
+  window.<B>webkitNotifications</B>.<B>requestPermission</B>();
+}
+</PRE>
+<DIV style="text-align: center;">
+<P><BUTTON id="request_permission" href="#">允许本页面进行桌面提醒</BUTTON></P>
+<P>提示: 如果你想 <EM>重置</EM> 许可，也可以点击上面的按钮</P><BR>
+<P>输入一个 twitter 用户名，即可通过桌面提醒看到此用户发布最新一条信息（国内用户请爬墙看此DEMO）</P><INPUT id="username" 
+value="用户名" type="text"><BUTTON id="show_tweets">显示最新的tweet</BUTTON></DIV>
+<SCRIPT> 
+          document.getElementById('request_permission').addEventListener('click', function() {
+            window.webkitNotifications.requestPermission();
+          }, false);
+
+          document.getElementById('show_tweets').addEventListener('click', function() {
+            readTweets();
+          }, false);
+
+          function readTweets() {
+            var username = document.getElementById('username').value;
+            if (username == 'username') {
+              alert('Enter a username first');
+              return;
+            }
+            var script = document.createElement("script");
+            script.src = 'http://twitter.com/statuses/user_timeline/'+ username+'.json?count=1&callback=fetchTweets';
+            document.body.appendChild(script);
+          }
+
+          function fetchTweets(data) {
+            var tweet;
+            var i = data.length;
+            while (i--) {
+              tweet = data[i];
+              if (window.webkitNotifications.checkPermission() == 0) {
+                // note the show()
+                window.webkitNotifications.createNotification(tweet.user.profile_image_url, tweet.user.name, tweet.text).show(); 
+              } else {
+                // Note that we can't call requestPermission from here as we are in the callback function and not triggered just on user action 
+                alert('You have to click on "Set notification permissions for this page" first to be able to receive notifications.');
+                return;          
+              }
+            }
+          }
+          </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN> 
+<H1>拖放操作 - Drag and drop</H1></HEADER><SECTION><PRE>document.addEventListener(<B>'dragstart'</B>, function(event) {
+   <B>event.dataTransfer.setData</B>('text', 'Customized text');
+   <B>event.dataTransfer.effectAllowed</B> = 'copy';
+}, false);
+</PRE>
+<STYLE type="text/css" media="screen">
+  #drag_zone { font-size: 30%; list-style: none; float: left; }
+  #drag_zone li * { border: 4px solid #888; display: block; }
+  #drag_zone, #drop_zone, #drop_data { width: 20%; }
+  #drop_zone, #drop_data { padding: 40px; font-size: 30%; border: 5px solid #888; float: right; height: 240px; }
+  #drop_zone.hovering { border: 5px solid #aaa; background-color: rgba(255, 0, 0, 0.199219); }
+  #drop_data { background-color: #eee; font-family: Monospace; word-wrap: break-word; }
+</STYLE>
+
+<OL id="drag_zone">
+  <LI><IMG class="copy" src="HTML5%20演示_files/dwd1.png" draggable=""></LI>
+  <LI><SPAN style="padding: 5px;" draggable="">选择文本并拖动 
+  (文本将原封不动复制到目标区域)</SPAN></LI>
+  <LI><SPAN style="padding: 5px;" class="overwrite" draggable="">选择文本并拖动 
+  (文本将被调整后复制到目标区域)</SPAN></LI></OL>
+<DIV id="drop_data">Source Data</DIV>
+<DIV id="drop_zone">释放区域</DIV>
+<P style="padding: 35px; clear: both;">即将支持: 从桌面拖动文件到页面。</P>
+<SCRIPT>var dragZone = document.querySelector('#drag_zone');
+  var dropZone = document.querySelector('#drop_zone');
+  dragZone.addEventListener('dragstart', function(event) {
+    if (event.target.className) { // img case
+      event.dataTransfer.effectAllowed = event.target.className;
+      event.target.style.border = "4px solid #cc3300";
+    }
+    else { // text case
+      if (event.target.parentNode.className == 'overwrite') {
+        event.dataTransfer.setData("text", "<strong>调整后的文本</strong>");
+      }
+      event.target.parentNode.style.border = "4px solid #cc3300";
+    }
+    return true;
+  }, true);
+  dragZone.addEventListener('dragend', function(event) {
+    if (event.target.className) { // img case
+      event.target.style.border = "4px solid #888";
+    }
+    else { // text case
+      event.target.parentNode.style.border = "4px solid #888";
+    }
+    return true;
+  }, true);
+  dropZone.addEventListener('dragenter', function(event) {
+    if (event.preventDefault) event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+    console.log(this)
+    this.className = 'hovering';
+    return false;
+  }, false);
+  dropZone.addEventListener('dragover', function(event) {
+    if (event.preventDefault) event.preventDefault(); // allows us to drop
+    event.dataTransfer.dropEffect = 'copy';
+    return false;
+  }, false);
+  dropZone.addEventListener('dragleave', function(event) {
+    if (event.preventDefault) event.preventDefault(); // allows us to drop
+    this.className = '';
+    return false;
+  }, false);
+  dropZone.addEventListener('drop', function(event) {
+    if (event.preventDefault) event.preventDefault();
+    var imgPassed = null;
+    var dropdata = document.querySelector('#drop_data');
+    var types = event.dataTransfer.types;
+    document.querySelector('#drop_data').innerHTML = '';
+    this.innerText = '';
+    
+    for (var i = 0; i < types.length; i++) {
+      if (types[i] == 'Files') {
+        var files = event.dataTransfer.files;
+        for (var j = 0; j < files.length; j++) {
+          dropdata.innerHTML += '<p><em>File Name</em>: '+files[j].fileName+'</p>';
+          dropdata.innerHTML += '<p><em>File Size</em>: '+files[j].fileSize+'</p>';
+        }
+      }
+      else {
+        dropdata.innerHTML += '<p><em>'+types[i]+'</em>: '+event.dataTransfer.getData(types[i])+'</p>';
+      }
+
+      if (event.dataTransfer.getData(types[i]) && event.dataTransfer.getData(types[i]).match(/png/)) {
+        imgPassed = event.dataTransfer.getData(types[i]);
+      }
+    }
+    if (imgPassed) {
+      var cEl = document.createElement('canvas');
+      cEl.width = 200;
+      cEl.height = 100;
+      var ctx = cEl.getContext('2d');
+      var img_buffer = document.createElement('img');
+      img_buffer.src = imgPassed;
+      img_buffer.onload = function() { ctx.drawImage(img_buffer,0,0,100,100); }
+      this.appendChild(cEl);
+    }
+    else {
+      this.innerHTML = event.dataTransfer.getData('text');
+    }
+    return false;
+  }, false);
+</SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS</SPAN> 
+<H1>地理位置 - Geolocation</H1></HEADER><SECTION><PRE>if (<B>navigator</B>.<B>geolocation</B>) {
+  <B>navigator</B>.<B>geolocation</B>.<B>getCurrentPosition</B>(function(position) {
+    var lat = position.<B>coords</B>.<B>latitude</B>;
+    var lng = position.<B>coords</B>.<B>longitude</B>;
+    map.setCenter(new GLatLng(lat, lng), 13);
+    map.addOverlay(new GMarker(new GLatLng(lat, lng)));    
+  });
+}         
+</PRE><BUTTON 
+id="see_position">显示你的位置</BUTTON>
+<DIV style="height: 280px;" id="content"></DIV>
+<SCRIPT>
+          document.getElementById('see_position').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                // also monitor position as it changes
+                navigator.geolocation.watchPosition(showPosition);
+            } else {
+              console.log("no geolocation support");
+            }
+
+            function showPosition(position) {
+              var lat = position.coords.latitude;
+              var lng = position.coords.longitude;
+
+              var map = new GMap2(document.getElementById("content"));
+              map.setCenter(new GLatLng(lat, lng), 13);
+              map.addOverlay(new GMarker(new GLatLng(lat, lng)));
+            }
+          }, false);
+          </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="js">JS APIs</SPAN></HEADER><SECTION>
+<UL class="summary">
+  <LI>客户端储存 (Web SQL Database, App Cache, Web Storage)              </LI>
+  <LI>通信 (Web Sockets, Web Workers)              </LI>
+  <LI>用户体验 (Notifications, Drag and Drop API)              </LI>
+  <LI>地理位置 Geolocation            </LI></UL></SECTION></DIV>
+<DIV class="slide"><SECTION class="center">
+<H1><SPAN class="html">HTML</SPAN></H1></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>新的语义标签</H1></HEADER><SECTION><PRE class="two-column">&lt;body&gt;
+  &lt;<B>header</B>&gt;
+    &lt;<B>hgroup</B>&gt;
+      &lt;h1&gt;Page title&lt;/h1&gt;
+      &lt;h2&gt;Page subtitle&lt;/h2&gt;
+    &lt;/hgroup&gt;
+  &lt;/header&gt;
+
+  &lt;<B>nav</B>&gt;
+   &lt;ul&gt;
+     Navigation...
+   &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;<B>section</B>&gt;
+   &lt;<B>article</B>&gt;
+     &lt;<B>header</B>&gt;
+       &lt;h1&gt;Title&lt;/h1&gt;
+     &lt;/header&gt;
+     &lt;section&gt;
+       Content...
+     &lt;/section&gt;
+   &lt;/article&gt;
+
+   &lt;article&gt;
+     &lt;header&gt;
+       &lt;h1&gt;Title&lt;/h1&gt;
+     &lt;/header&gt;
+     &lt;section&gt;
+       Content...
+     &lt;/section&gt;
+   &lt;/article&gt;
+
+   &lt;article&gt;
+     &lt;header&gt;
+       &lt;h1&gt;Title&lt;/h1&gt;
+     &lt;/header&gt;
+     &lt;section&gt;
+       Content...
+     &lt;/section&gt;
+   &lt;/article&gt;
+  &lt;/section&gt;
+
+  &lt;<B>aside</B>&gt;
+   Top links...
+  &lt;/aside&gt;
+
+  &lt;<B>footer</B>&gt;
+   Copyright © 2009.
+  &lt;/footer&gt;
+&lt;/body&gt;
+
+            </PRE></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>新的链接关系</H1></HEADER>
+<STYLE type="text/css" media="screen">.underlined { text-decoration: underline; }
+          </STYLE>
+<SECTION><PRE>&lt;link rel='alternate' type="application/rss+xml" href="http://myblog.com/feed" /&gt;
+&lt;link <B>rel='icon'</B> href="/favicon.ico" /&gt;
+&lt;link <B>rel='pingback'</B> href="http://myblog.com/xmlrpc.php"&gt;
+&lt;link <B>rel='prefetch'</B> href="http://myblog.com/main.php"&gt;
+...
+
+&lt;a <B>rel='archives'</B> href="http://myblog.com/archives"&gt;<SPAN class="underlined">old posts</SPAN>&lt;/a&gt;
+&lt;a <B>rel='external'</B> href="http://notmysite.com"&gt;<SPAN class="underlined">tutorial</SPAN>&lt;/a&gt;
+&lt;a <B>rel='license'</B> href="http://www.apache.org/licenses/LICENSE-2.0"&gt;<SPAN class="underlined">license</SPAN>&lt;/a&gt;
+&lt;a <B>rel='nofollow'</B> href="http://notmysite.com/sample"&gt;<SPAN class="underlined">wannabe</SPAN>&lt;/a&gt;
+&lt;a <B>rel='tag'</B> href="http://myblog.com/category/games"&gt;<SPAN class="underlined">games posts</SPAN>&lt;/a&gt;
+...
+</PRE></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>微数据 - Microdata</H1></HEADER><SECTION><PRE>&lt;div <B>itemscope itemtype="http://example.org/band"</B>&gt;
+ &lt;p&gt;My name is &lt;span <B>itemprop='name'</B>&gt;Neil&lt;/span&gt;.&lt;/p&gt;
+ &lt;p&gt;My band is called &lt;span <B>itemprop='band'</B>&gt;Four Parts Water&lt;/span&gt;.&lt;/p&gt;
+ &lt;p&gt;I am &lt;span <B>itemprop='nationality'</B>&gt;British&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;            
+</PRE><IMG 
+style="margin: 30px auto; border: 3px solid rgb(204, 204, 204); width: 84%; display: block;" 
+src="HTML5%20演示_files/magpie.png"></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>无障碍富互联网应用程序属性 - ARIA attributes</H1></HEADER><SECTION><PRE>&lt;ul id="tree1"
+      <B>role</B>="<B>tree</B>" 
+      tabindex="0" 
+      <B>aria-labelledby</B>="label_1"
+      &gt; 
+  &lt;li <B>role</B>="<B>treeitem</B>" tabindex="-1" <B>aria-expanded</B>="true"&gt;Fruits&lt;/li&gt; 
+  &lt;li <B>role</B>="<B>group</B>"&gt; 
+    &lt;ul&gt; 
+      &lt;li <B>role</B>="<B>treeitem</B>" tabindex="-1"&gt;Oranges&lt;/li&gt; 
+      &lt;li <B>role</B>="<B>treeitem</B>" tabindex="-1"&gt;Pineapples&lt;/li&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+</PRE></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>新的表单元素类型</H1></HEADER><SECTION>
+<STYLE>:invalid {
+              background-color: red;
+            }
+            </STYLE>
+
+<H2>增强已有元素            </H2><PRE><STRONG>UI方面:</STRONG>
+              
+&lt;input type='<B>range</B>' min='0' max='50' value='0' /&gt; <INPUT value="0" type="range" max="50" min="0">
+&lt;input results='10' type='<B>search</B>' /&gt; <INPUT type="search" results="10">
+&lt;input type='text' <B>placeholder</B>='Search inside' /&gt; <INPUT type="text" placeholder="Search inside">
+
+<STRONG>输入检查:(不符合条件的将显示红色背景)</STRONG>
+
+&lt;style&gt; :invalid { background-color: red; } &lt;/style&gt;
+&lt;input type='<B>color</B>' /&gt; <INPUT value="bear" type="color">
+&lt;input type='<B>number</B>' /&gt; <INPUT value="abc" type="number">
+&lt;input type='<B>email</B>' /&gt; <INPUT value="some@email.com" type="email">
+&lt;input type='<B>tel</B>' /&gt; <INPUT value="1234" type="tel">
+etc...
+</PRE>
+<H2>新增的元素</H2><PRE>&lt;<B>meter</B>&gt;
+&lt;<B>progress</B>&gt;
+&lt;<B>output</B>&gt;
+etc...
+</PRE></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>音频 + 视频 - Audio + Video</H1></HEADER><SECTION style="text-align: center;"><PRE>&lt;<B>audio</B> src="sound.mp3" <B>controls</B>&gt;&lt;/audio&gt;
+document.getElementById("audio").<B>muted</B>=false;
+
+&lt;<B>video</B> src='movie.mp4' <B>autoplay</B> <B>controls</B> &gt;&lt;/video&gt;
+document.getElementById("video").<B>play</B>();
+</PRE><!--     
+            <div style="position: relative; height: 250px">
+              <video style="z-index: 1000; position: absolute; top: 20px; left: 210px; width: 400px" id="video" src="media/glide-lossless.mov"></video>
+            </div>
+            <br />
+            <button class="large" onclick="document.getElementById(&quot;video&quot;).play();">Play video</button>
+-->
+<DIV style="margin: 5px 0px 0px 20px; float: left;"><VIDEO style="border: 3px solid black; float: left;" 
+id="clip" controls="" width="390">                Your browser does not support 
+the video tag              </VIDEO>
+<DIV><INPUT id="play_button" disabled="" onclick="PlayVideo()" value="播放" type="button" ;=""><INPUT id="pause_button" disabled="" onclick="PauseVideo()" value="暂停" type="button" ;=""><INPUT id="mute" onclick="Mute()" value="静音" type="button" ;=""><INPUT id="unmute" onclick="Unmute()" value="解除静音" type="button" ;=""></DIV>
+<DIV>
+<FORM name="video_form"><SELECT onchange="SelectVideo();" 
+  name="video_select"><OPTION>选择一段视频...</OPTION><OPTION value="./src/chrome_japan.mp4">Google 
+  Chrome</OPTION><OPTION value="./src/google_latitude.mp4">Google 
+  Latitude</OPTION><OPTION value="./src/googleplex.mp4">Life at 
+  Goolgeplex</OPTION></SELECT></FORM></DIV><INPUT onclick="addReflection()" value="给视频添加CSS倒影效果" type="button" ;=""></DIV>
+<DIV style="margin: 70px 0px 0px 60px; padding: 20px; float: left;"><AUDIO 
+style="border: 3px solid black;" id="audio_clip" controls="" width="670">        
+        Your browser dows not support the audio tag              </AUDIO>
+<DIV><INPUT id="audio_play_button" disabled="" onclick="PlayAudio()" value="播放" type="button" ;=""><INPUT id="audio_pause_button" disabled="" onclick="PauseAudio()" value="暂停" type="button" ;=""><INPUT id="audio_mute" onclick="MuteAudio()" value="静音" type="button" ;=""><INPUT id="audio_unmute" onclick="UnmuteAudio()" value="解除静音" type="button" ;=""></DIV>
+<DIV>
+<FORM name="audio_form"><SELECT onchange="SelectAudio();" 
+  name="audio_select"><OPTION>选择一首国歌...</OPTION><OPTION value="./src/argentina.ogg">阿根廷</OPTION><OPTION 
+  value="./src/france.ogg">法国</OPTION><OPTION 
+  value="./src/italia.mp3">意大利</OPTION><OPTION 
+value="./src/star.mp3">美国</OPTION></SELECT></FORM></DIV></DIV></SECTION>
+<SCRIPT>
+            clip.addEventListener('pause', function() {
+              clearInterval(subtitlesInterval);
+            }, false);
+            
+            function SelectVideo() {
+              clip.src = video_form.video_select.value;
+              clip.load();
+              PlayVideo();
+            }
+            
+            function PlayVideo() {
+              clip.play();
+              play_button.disabled = true;
+              pause_button.disabled = false;      
+            }
+         
+            function PauseVideo() {
+              clip.pause();
+              play_button.disabled = false;  
+              pause_button.disabled = true;          
+            }
+
+            function Mute() {
+              clip.muted = true;
+            }
+
+            function Unmute() {
+              clip.muted = false;
+            }
+            
+            function OnFinished() {
+              play_button.disabled = false;
+              pause_button.disabled = true;          
+            }
+            
+            function addReflection() {
+              clip.style.webkitBoxReflect = "below 10px";
+            }
+          </SCRIPT>
+
+<SCRIPT>
+            audio_clip.addEventListener('ended', OnAudioFinished, false);
+
+            function SelectAudio() {
+              audio_clip.src = audio_form.audio_select.value;
+              audio_clip.load();
+              PlayAudio();
+            }
+            
+            function PlayAudio() {
+              audio_clip.play();
+              audio_play_button.disabled = true;
+              audio_pause_button.disabled = false;      
+            }
+         
+            function PauseAudio() {
+              audio_clip.pause();
+              audio_play_button.disabled = false;  
+              audio_pause_button.disabled = true;          
+            }
+
+            function MuteAudio() {
+              audio_clip.muted = true;
+            }
+
+            function UnmuteAudio() {
+              audio_clip.muted = false;
+            }
+            
+            function OnAudioFinished() {
+              audio_play_button.disabled = false;
+              audio_pause_button.disabled = true;          
+            }
+          </SCRIPT>
+</DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>图形绘制 - Canvas</H1></HEADER><SECTION>
+<STYLE>
+              #canvas {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #bbb;
+              }
+            </STYLE>
+<PRE>&lt;canvas id="canvas" width="838" height="220"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  var canvasContext = document.getElementById("canvas").<B>getContext</B>("2d");
+  canvasContext.<B>fillRect</B>(250, 25, 150, 100);
+  
+  canvasContext.beginPath();
+  canvasContext.<B>arc</B>(450, 110, 100, Math.PI * 1/2, Math.PI * 3/2);
+  canvasContext.<B>lineWidth</B> = 15;
+  canvasContext.<B>lineCap</B> = 'round';
+  canvasContext.<B>strokeStyle</B> = 'rgba(255, 127, 0, 0.5)';
+  canvasContext.stroke();
+&lt;/script&gt;
+            </PRE><CANVAS 
+id="canvas" height="225" width="838"></CANVAS>
+<SCRIPT>
+              var canvasContext = document.getElementById("canvas").getContext("2d");
+              canvasContext.fillRect(250, 25, 150, 100);
+              canvasContext.beginPath();
+              canvasContext.arc(450, 110, 100, Math.PI * 1/2, Math.PI * 3/2, false);
+              canvasContext.lineWidth = 15;
+              canvasContext.lineCap = 'round';
+              canvasContext.strokeStyle = 'rgba(255, 127, 0, 0.5)';
+              canvasContext.stroke();
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>Canvas 例子</H1></HEADER><SECTION><example style="padding: 0px; width: 520px; height: 500px; margin-top: 40px; margin-left: 150px;"><IFRAME 
+style="background: white; border: currentColor; width: 520px; height: 500px;" 
+src="HTML5%20演示_files/index.htm" 
+scrolling="no"></IFRAME></example></SECTION></DIV>
+<DIV id="canvas-3d" class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>Canvas 3D (WebGL)</H1></HEADER><SECTION>
+<STYLE>
+              #canvas {
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #bbb;
+              }
+            </STYLE>
+<PRE>&lt;canvas id="canvas" width="838" height="220"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  var gl = document.getElementById("canvas").<B>getContext</B>("experimental-webgl");
+  gl.<B>viewport</B>(0, 0, canvas.width, canvas.height);
+  ...
+&lt;/script&gt;
+            </PRE><IFRAME 
+style="border: currentColor; width: 100%; height: 352px;" src="HTML5%20演示_files/san_angeles.htm" 
+scrolling="no"></IFRAME></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>HTML5中的SVG</H1></HEADER><SECTION>
+<STYLE>
+              #svg {
+                border-radius: 8px;
+                border: 1px solid #bbb;
+              }
+            </STYLE>
+<PRE>&lt;html&gt;
+  <B>&lt;svg&gt;
+    &lt;circle id="myCircle" class="important" cx="50%" cy="50%" r="100" 
+        fill="url(#myGradient)"
+        onmousedown="alert('hello');"/&gt;
+  &lt;/svg&gt;</B>
+&lt;/html&gt;</PRE>
+<DIV class="svg"></DIV>
+<SCRIPT>
+            // insert SVG using script until SVG in HTML5 is more widely supported
+            // (currently supported in IE 9 and Firefox nightlies only)
+            window.addEventListener('DOMContentLoaded', function() {
+              var container = document.getElementsByClassName('svg')[0];
+              var svgns = 'http://www.w3.org/2000/svg';
+              var svg = document.createElementNS(svgns, 'svg');
+              svg.setAttribute('width', '300px');
+              svg.setAttribute('height', '300px');
+              
+              // our linearGradient
+              var defs = document.createElementNS(svgns, 'defs');
+              var gradient = document.createElementNS(svgns, 'linearGradient');
+              gradient.setAttribute('id', 'myGradient');
+              gradient.setAttribute('x1', '0%');
+              gradient.setAttribute('y1', '100%');
+              gradient.setAttribute('x2', '100%');
+              gradient.setAttribute('y2', '0%');
+              var stop = document.createElementNS(svgns, 'stop');
+              stop.setAttribute('offset', '5%');
+              stop.setAttribute('stop-color', 'red');
+              gradient.appendChild(stop);
+              stop = document.createElementNS(svgns, 'stop');
+              stop.setAttribute('offset', '95%');
+              stop.setAttribute('stop-color', 'blue');
+              stop.setAttribute('stop-opacity', '0.5');
+              gradient.appendChild(stop);
+              defs.appendChild(gradient);
+              svg.appendChild(defs);
+              
+              // our example circle
+              var circle = document.createElementNS(svgns, 'circle');
+              circle.setAttribute('cx', '50%');
+              circle.setAttribute('cy', '50%');
+              circle.setAttribute('r', 100);
+              circle.setAttribute('fill', 'url(#myGradient)');
+              circle.setAttribute('stroke-color', 'red');
+              circle.addEventListener('mousedown', function() {
+                alert('hello');
+              }, false);
+              svg.appendChild(circle);
+              container.appendChild(svg);
+            }, false);
+          </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN> 
+<H1>SVG 例子</H1></HEADER><SECTION><example style="padding: 0px; width: 550px; height: 540px; margin-top: 40px; margin-left: 150px;">
+<OBJECT style="background: white; border: currentColor; width: 550px; height: 540px;" 
+data="src/svg/famoustiger.svg" 
+type="image/svg+xml"></OBJECT></example></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="html">HTML</SPAN></HEADER><SECTION>
+<UL class="summary">
+  <LI>语义 (New tags, Link Relations, Microdata)              </LI>
+  <LI>易用性 (ARIA roles)              </LI>
+  <LI>Web 表单 2.0 (Input 元素)              </LI>
+  <LI>多媒体 (Audio 标签, Video 标签)              </LI>
+  <LI>2D and 3D 图形绘制 (Canvas, WebGL, SVG)            </LI></UL></SECTION></DIV>
+<DIV class="slide"><SECTION class="center">
+<H1><SPAN class="css">CSS</SPAN></H1></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>CSS 选择器</H1></HEADER><SECTION class="left">
+<H2>   奇/偶选择</H2><PRE>.row:<B>nth-child(even)</B> {
+  background: #dde;
+}
+.row:<B>nth-child(odd)</B> {
+  background: white;
+}
+</PRE>
+<STYLE> 
+.row {
+  padding: 4px;
+}
+.row:nth-child(even) {
+  background: #bbb;
+  color: white;
+}
+</STYLE>
+<example>
+<DIV class="row">Row 1</DIV>
+<DIV class="row">Row 2</DIV>
+<DIV class="row">Row 3</DIV>
+<DIV class="row">Row 4</DIV></example>
+<H2>               Image-like display            </H2><PRE>div {
+  display: <B>inline-block</B>;
+}
+</PRE></SECTION><SECTION class="right">
+<H2>通过属性选择            </H2><PRE>input<B>[type="text"]</B> {
+  background: #eee;
+}</PRE>
+<H2>反选            </H2><PRE><B>:not</B>(.box) {
+  color: #00c; 
+}            
+<B>:not</B>(span) {
+  display: block; 
+}  
+</PRE>
+<H2>以及一些其它的选择方法            </H2><PRE>h2:<B>first-child</B> { ... }
+
+div.text <B>&gt;</B> div { ... } 
+h2 <B>+</B> header { ... } 
+</PRE></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>显示本地没有的字体</H1></HEADER><SECTION><PRE><B>@font-face</B> { 
+  font-family: 'Junction'; 
+  src: url(Junction02.otf); 
+}
+<B>@font-face</B> { 
+  font-family: 'LeagueGothic'; 
+  src: url(LeagueGothic.otf); 
+}
+<B>@font-face</B> { 
+  font-family: 'GG250'; 
+  src: url(General250.otf); 
+}
+
+header {
+  font-family: 'LeagueGothic';
+}</PRE><example 
+style="text-align: center;"><SPAN style="font-family: LeagueGothic; font-size: 35px;">不使用图片显示本地没有的字体。如：LeagueGothic 
+font</SPAN></example></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>文本溢出处理</H1></HEADER><SECTION><PRE>div {
+  <B>text-overflow: ellipsis;</B>
+}</PRE>
+<DIV style="width: 95%;" id="wrapping"><example style="height: 1.1em; overflow: hidden; font-size: 25px;"> 
+               A long cold winter delayed the blossoming of the millions of 
+cherry, apricot, peach, and prune plum trees covering hundreds of square miles 
+of the Valley floor. Then, unlike many years, the rains that followed were light 
+and too early to knock the blossoms from their branches.              
+</example><example style="height: 1.1em; overflow: hidden; font-size: 25px; white-space: nowrap;"> 
+               A long cold winter delayed the blossoming of the millions of 
+cherry, apricot, peach, and prune plum trees covering hundreds of square miles 
+of the Valley floor. Then, unlike many years, the rains that followed were light 
+and too early to knock the blossoms from their branches.              
+</example><example style="height: 1.1em; overflow: hidden; font-size: 25px; white-space: nowrap; text-overflow: ellipsis;"> 
+               A long cold winter delayed the blossoming of the millions of 
+cherry, apricot, peach, and prune plum trees covering hundreds of square miles 
+of the Valley floor. Then, unlike many years, the rains that followed were light 
+and too early to knock the blossoms from their branches.              
+</example></DIV><INPUT onchange="changeWrapping(event)" value="95" type="range" 
+max="100" min="0"><info>拖动滑动条试试！            </info></SECTION>
+<SCRIPT>function changeWrapping(event) {
+              document.getElementById('wrapping').style.width = event.target.value + '%';
+            }
+          </SCRIPT>
+</DIV>
+<DIV class="slide">
+<STYLE>
+          div.slide #columns-no-example p {
+            font-size: 15px;
+          }
+          </STYLE>
+<HEADER><SPAN class="css">CSS</SPAN> 
+<H1>分栏显示</H1></HEADER><SECTION><PRE>-webkit-<B>column-count</B>: <SPAN id="columns-no-value">2</SPAN>; <INPUT onchange="changeColumnNoSlider(event)" value="2" type="range" max="6" min="1"> 
+-webkit-<B>column-rule</B>: 1px solid #bbb;
+-webkit-<B>column-gap</B>: 2em;</PRE><example 
+style="-webkit-column-count: 2; -webkit-column-rule: 1px solid #bbb; -webkit-column-gap: 2em;" 
+id="columns-no-example">
+<P>                In March 1936, an unusual confluence of forces occurred in    
+             Santa Clara County.              </P>
+<P>                A long cold winter delayed the blossoming of the millions of  
+               cherry, apricot, peach, and prune plum trees covering hundreds    
+             of square miles of the Valley floor. Then, unlike many years,       
+          the rains that followed were light and too early to knock              
+   the blossoms from their branches.              </P>
+<P>                Instead, by the billions, they all burst open at once.        
+         Seemingly overnight, the ocean of green that was the Valley             
+    turned into a low, soft, dizzyingly perfumed cloud of pink                 
+and white. Uncounted bees and yellow jackets, newly born,                 raced 
+out of their hives and holes, overwhelmed by this                 impossible 
+banquet.              </P>
+<P>                Then came the wind.              </P>
+<P>                It roared off the Pacific Ocean, through the nearly           
+      uninhabited passes of the Santa Cruz Mountains and then,                 
+flattening out, poured down into the great alluvial plains                 of 
+the Valley. A tidal bore of warm air, it tore along the                 columns 
+of trees, ripped the blossoms apart and carried them                 off in a 
+fluttering flood of petals like foam rolling up a                 beach.         
+     </P>
+<P>                This perfumed blizzard hit Stevens Creek Boulevard, a 
+two-lane                road with a streetcar line down its center, that was the 
+main                road in the West Valley. It froze traffic, as drivers found  
+              themselves lost in a soft, muted whiteout. Only the streetcar,     
+           its path predetermined, passed on...              
+</P></example></SECTION>
+<SCRIPT>
+            function changeColumnNoSlider(event) {
+              var val = event.target.value;
+              document.getElementById('columns-no-value').innerHTML = val;
+              document.getElementById('columns-no-example').style.webkitColumnCount = val;
+
+            }
+          </SCRIPT>
+</DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>文本描边</H1></HEADER><SECTION><PRE>div {
+  -webkit-<B>text-fill-color</B>: black;
+  -webkit-<B>text-stroke-color</B>: red;
+  -webkit-<B>text-stroke-width</B>: <SPAN id="text-stroke-value">0.00</SPAN>px; <INPUT id="text-stroke" onchange="changeTextStroke()" value="0" type="range" max="50" min="0"> 
+}        </PRE><example 
+style="padding: 20px 0px; text-align: center; font-family: Junction; font-size: 85px; -webkit-text-stroke-color: red; -webkit-text-fill-color: black;" 
+id="text-stroke-example">文本描边示例            </example>
+<SCRIPT>function changeTextStroke() {
+                var width = (document.getElementById('text-stroke').value * 0.25).toFixed(2); 
+
+                document.getElementById('text-stroke-example').style.webkitTextStrokeWidth = width + 'px';
+
+                document.getElementById('text-stroke-value').innerHTML = width;
+              }
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>透明效果</H1></HEADER><SECTION>
+<STYLE>#opacity-body {
+                font-family: Junction;
+                font-size: 84%;
+                max-width: 800px;
+                background: url(src/opacity_bg.jpg) top center no-repeat;
+                margin: 0 auto;
+                padding: 20px;
+                border-radius: 8px;
+              }
+              #opacity-example {
+                margin: 100px auto;
+                font-size: 80px;
+                line-height: 200px;
+                text-align: center;
+                font-weight: bold;
+                letter-spacing: -4px; 
+                border-radius: 5px;
+              }
+            </STYLE>
+<PRE>  color: <B>rgba</B>(255, 0, 0, <SPAN id="opacity-color-value">0.75</SPAN>); <INPUT id="opacity-color" onchange="changeOpacity()" value="75" type="range" max="100" min="0"> 
+  background: <B>rgba</B>(0, 0, 255, <SPAN id="opacity-background-value">0.75</SPAN>); <INPUT id="opacity-background" onchange="changeOpacity()" value="75" type="range" max="100" min="0"> 
+</PRE>
+<DIV id="opacity-body">
+<DIV style="color: rgba(255, 0, 0, 0.746094); background-color: rgba(0, 0, 255, 0.746094); text-shadow: none;" 
+id="opacity-example">透明效果              </DIV></DIV>
+<SCRIPT>function changeOpacity() {
+                var textOpacity = (document.getElementById('opacity-color').value / 100).toFixed(2);
+                var backgroundOpacity = (document.getElementById('opacity-background').value / 100).toFixed(2);
+
+                var el = document.getElementById('opacity-example');
+
+                el.style.color = 'rgba(255, 0, 0, ' + textOpacity + ')';
+                el.style.background = 'rgba(0, 0, 255, ' + backgroundOpacity + ')';        
+
+                document.getElementById('opacity-color-value').innerHTML = textOpacity;
+                document.getElementById('opacity-background-value').innerHTML = backgroundOpacity;                
+              }
+
+              changeOpacity();
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>HSL(色相/饱和度/亮度)色彩模式</H1></HEADER><SECTION><PRE>color: <B>hsla</B>(
+  <SPAN id="hsl-h-value">128</SPAN>, <INPUT id="hsl-h" onchange="changeHSL()" value="128" type="range" max="255" min="0"> 
+  <SPAN id="hsl-s-value">75</SPAN>%, <INPUT id="hsl-s" onchange="changeHSL()" value="75" type="range" max="100" min="0"> 
+  <SPAN id="hsl-l-value">33</SPAN>%, <INPUT id="hsl-l" onchange="changeHSL()" value="33" type="range" max="100" min="0"> 
+  <SPAN id="hsl-a-value">1.00</SPAN>); <INPUT id="hsl-a" onchange="changeHSL()" value="100" type="range" max="100" min="0"> 
+        </PRE><example 
+style="padding: 20px 0px; text-align: center; color: rgb(21, 147, 38); font-family: Junction; font-size: 75px;" 
+id="hsl-example">              HSL example            </example>
+<SCRIPT>
+              function changeHSL() {
+                var h = document.getElementById('hsl-h').value * 1.0;
+                var s = document.getElementById('hsl-s').value * 1.0;
+                var l = document.getElementById('hsl-l').value * 1.0;
+                var a = (document.getElementById('hsl-a').value / 100).toFixed(2);
+                var el = document.getElementById('hsl-example');
+
+                el.style.color = 'hsla(' + h + ', ' + s + '%, ' + l + '%, ' + a + ')';
+
+                document.getElementById('hsl-h-value').innerHTML = h;
+                document.getElementById('hsl-s-value').innerHTML = s;
+                document.getElementById('hsl-l-value').innerHTML = l;
+                document.getElementById('hsl-a-value').innerHTML = a;
+              }
+
+              changeHSL();
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>圆角效果</H1></HEADER><SECTION><PRE>  <B>border-radius</B>: <SPAN id="rounded-border-value">0</SPAN>px; <INPUT id="rounded-border" onchange="changeRounded(event)" value="0" type="range" max="50" min="0"> 
+</PRE><example 
+style="border-radius: 0px; border: 1px solid rgb(187, 187, 187);" id="rounded-example">
+<DIV style="padding: 20px 0px; text-align: center; font-family: Junction; font-size: 75px;">请注意背景框体边角 
+           </DIV></example>
+<SCRIPT>function changeRounded() {
+              var el = document.getElementById('rounded-example');
+
+              var borderVal = document.getElementById('rounded-border').value;
+              document.getElementById('rounded-border-value').innerHTML = borderVal;
+
+              el.style.borderRadius = borderVal + 'px';
+            }
+          </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>渐变效果</H1></HEADER><SECTION><PRE>background: -webkit-<B>gradient</B>(<B>linear</B>, left top, left bottom, 
+                             from(#<SPAN style="color: rgb(0, 171, 235); text-shadow: #00abeb 0 0 1px;">00abeb</SPAN>), to(white), 
+                             color-stop(0.5, white), color-stop(0.5, <SPAN style="color: rgb(102, 204, 0); text-shadow: #00abeb 0 0 1px;">#66cc00</SPAN>))            
+</PRE><example 
+style="border: 0px currentColor; height: 100px;"></example><BR><PRE>background: -webkit-gradient(<B>radial</B>, 430 50, 0, 430 50, <SPAN id="gradients-radial-value">200</SPAN>, from(red), to(#000))  
+                                                        <INPUT id="gradients-radial" onchange="changeGradients(event)" value="200" type="range" max="800" min="1"> 
+</PRE><example 
+style="border: 0px currentColor; height: 100px;" 
+id="gradients-radial-example"></example>
+<SCRIPT>
+              function changeGradients() {
+                var size = document.getElementById('gradients-radial').value; 
+
+                document.getElementById('gradients-radial-example').style.background = 
+                    '-webkit-gradient(radial, 430 50, 0, 430 50, ' + size + ', from(red), to(#000))';
+
+                document.getElementById('gradients-radial-value').innerHTML = size;
+              }
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>阴影效果</H1></HEADER><SECTION><PRE class="two-column"><B>text-shadow</B>: 
+  rgba(64, 64, 64, 0.5) 
+  <SPAN id="shadows-text-x-value">0</SPAN>px <INPUT id="shadows-text-x" onchange="changeShadow(event)" value="0" type="range" max="9" min="-9"> 
+  <SPAN id="shadows-text-y-value">0</SPAN>px <INPUT id="shadows-text-y" onchange="changeShadow(event)" value="0" type="range" max="9" min="-9"> 
+  <SPAN id="shadows-text-size-value">0</SPAN>px; <INPUT id="shadows-text-size" onchange="changeShadow(event)" value="0" type="range" max="9" min="0">     
+<B>box-shadow</B>: 
+  rgba(0, 0, 128, 0.25) 
+  <SPAN id="shadows-box-x-value">0</SPAN>px <INPUT id="shadows-box-x" onchange="changeShadow(event)" value="0" type="range" max="9" min="-9"> 
+  <SPAN id="shadows-box-y-value">0</SPAN>px <INPUT id="shadows-box-y" onchange="changeShadow(event)" value="0" type="range" max="9" min="-9"> 
+  <SPAN id="shadows-box-size-value">0</SPAN>px; <INPUT id="shadows-box-size" onchange="changeShadow(event)" value="0" type="range" max="9" min="0">
+            </PRE><example 
+style="margin: 10px 10px 30px; padding: 20px; text-align: center; font-family: Junction; font-size: 75px;" 
+id="shadow-example">阴影效果示例            </example></SECTION>
+<SCRIPT>function changeShadow() {
+              var el = document.getElementById('shadow-example');
+
+              var textXVal = document.getElementById('shadows-text-x').value;
+              var textYVal = document.getElementById('shadows-text-y').value;
+              var textSizeVal = document.getElementById('shadows-text-size').value;
+
+              document.getElementById('shadows-text-x-value').innerHTML = textXVal;
+              document.getElementById('shadows-text-y-value').innerHTML = textYVal;
+              document.getElementById('shadows-text-size-value').innerHTML = textSizeVal;
+
+              var boxXVal = document.getElementById('shadows-box-x').value;
+              var boxYVal = document.getElementById('shadows-box-y').value;
+              var boxSizeVal = document.getElementById('shadows-box-size').value;
+
+              document.getElementById('shadows-box-x-value').innerHTML = boxXVal;
+              document.getElementById('shadows-box-y-value').innerHTML = boxYVal;
+              document.getElementById('shadows-box-size-value').innerHTML = boxSizeVal;
+
+              el.style.textShadow = 'rgba(64, 64, 64, 0.5) ' + textXVal + 'px ' + textYVal + 'px ' + textSizeVal + 'px';
+              el.style.boxShadow = 'rgba(0, 0, 128, 0.25) ' + boxXVal + 'px ' + boxYVal + 'px ' + boxSizeVal + 'px';
+            }
+          </SCRIPT>
+</DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>制作一个LOGO，只需拖动滑动条</H1></HEADER><SECTION><PRE><B>text-shadow</B>: rgba(0, 0, 0, 0.5) 0 <SPAN id="web20-shadow-value-1">0</SPAN>px <SPAN id="web20-shadow-value-2">0</SPAN>px; <INPUT id="web20-shadow" onchange="changeWeb20(event)" value="0" type="range" max="9" min="0"> 
+
+background: 
+  -<B>webkit-gradient</B>(linear, left top, left bottom, <INPUT id="web20-gradient" onchange="changeWeb20(event)" value="0" type="range" max="100" min="0"> 
+                   from(rgba(200, 200, 240, <SPAN id="web20-gradient-value-1">0</SPAN>)), to(rgba(255, 255, 255, <SPAN id="web20-gradient-value-2">0</SPAN>))); 
+
+<B>border-radius</B>: <SPAN id="web20-border-value">0</SPAN>px; <INPUT id="web20-border" onchange="changeWeb20(event)" value="0" type="range" max="50" min="0"> 
+
+-webkit-<B>box-reflect</B>: below 10px
+  -webkit-gradient(linear, left top, left bottom, <INPUT id="web20-reflect" onchange="changeWeb20(event)" value="0" type="range" max="100" min="0"> 
+                   from(transparent), to(rgba(255, 255, 255, <SPAN id="web20-reflect-value">0</SPAN>)));          
+</PRE><example>
+<DIV style="padding: 20px 0px; text-align: center; color: rgb(34, 34, 102); font-family: Junction; font-size: 65px; margin-bottom: 100px;">
+<DIV id="web20-google">                  Web 2.0 Logo                
+</DIV></DIV></example></SECTION>
+<SCRIPT>
+            function changeWeb20() {
+              var el = document.getElementById('web20-google');
+
+              var textShadowVal = document.getElementById('web20-shadow').value;
+              document.getElementById('web20-shadow-value-1').innerHTML = textShadowVal;
+              document.getElementById('web20-shadow-value-2').innerHTML = textShadowVal;
+
+              var gradientVal = document.getElementById('web20-gradient').value / 100;
+              document.getElementById('web20-gradient-value-1').innerHTML = gradientVal;
+              document.getElementById('web20-gradient-value-2').innerHTML = gradientVal;
+
+              var borderVal = document.getElementById('web20-border').value;
+              document.getElementById('web20-border-value').innerHTML = borderVal;
+
+              var reflectVal = document.getElementById('web20-reflect').value / 100;
+              document.getElementById('web20-reflect-value').innerHTML = reflectVal;
+
+              el.style.textShadow = 'rgba(0, 0, 0, 0.5) 0 ' + textShadowVal + 'px ' + textShadowVal + 'px';
+              el.style.background = '-webkit-gradient(linear, left top, left bottom, from(rgba(200, 200, 240, ' + gradientVal + ')), to(rgba(255, 255, 255, ' + gradientVal + ')))';
+              el.style.borderRadius = borderVal + 'px';
+              el.style.webkitBoxReflect = 'below 10px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, ' + reflectVal + ')))';
+            }
+          </SCRIPT>
+</DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>更强大的背景</H1></HEADER><SECTION>
+<H2>              背景的尺寸            </H2><PRE>#logo {
+  background: url(logo.gif) center center no-repeat;
+  <B>background-size: 
+    <SELECT onchange="changeBackgroundSize(event)">
+      <OPTION>auto</OPTION>
+      <OPTION>contain</OPTION>
+      <OPTION>cover</OPTION>
+      <OPTION>100%</OPTION>
+    </SELECT>;</B>
+}
+</PRE>
+<STYLE>
+              #background-textarea {
+                background: white url(http://www.google.com/intl/en_ALL/images/logo.gif) center center no-repeat;
+                background-size: auto;
+                width: 200px;
+                height: 100px;
+                outline: 0;
+              }
+            </STYLE>
+<TEXTAREA id="background-textarea"></TEXTAREA><info style="padding-right: 10px; float: left;">改变大小试试 
+»</info>
+<H2>多个背景            </H2><PRE>div {
+  background: url(src/zippy-plus.png) 10px center no-repeat, 
+              url(src/gray_lines_bg.png) 10px center repeat-x;
+}
+            </PRE><example 
+style='background: url("src/zippy-plus.png") no-repeat 10px, url("src/gray_lines_bg.png") repeat-x 10px; padding-left: 28px; margin-left: 10px;'>测试</example>
+<SCRIPT>function changeBackgroundSize(event) {
+                document.getElementById('background-textarea').style.backgroundSize = event.target.value; 
+              }
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>变换 - Transitions</H1></HEADER><SECTION>
+<STYLE>
+              #transitions-box-2 {
+                -webkit-transition: margin-left 1s ease-in-out;                
+              }
+              #transitions .left {
+                margin-left: 0;
+              }
+              #transitions .right {
+                margin-left: 780px;
+              }
+              #transitions div {
+                width: 20px;
+                height: 20px;
+                background: red;
+              }
+
+            </STYLE>
+<example id="transitions">
+<DIV id="transitions-box-1"></DIV></example><PRE>#box.left {
+  margin-left: 0;
+}
+#box.right {
+  margin-left: 1000px;
+}
+
+document.getElementById('box').className = 'left'; <BUTTON onclick="transitionLeft(1)">向左</BUTTON>
+document.getElementById('box').className = 'right'; <BUTTON onclick="transitionRight(1)">向右</BUTTON>
+</PRE><example 
+id="transitions">
+<DIV id="transitions-box-2"></DIV></example><PRE>#box {
+  -webkit-<B>transition</B>: margin-left 1s ease-in-out;
+}  
+
+document.getElementById('box').className = 'left'; <BUTTON onclick="transitionLeft(2)">向左</BUTTON>
+document.getElementById('box').className = 'right'; <BUTTON onclick="transitionRight(2)">向右</BUTTON>
+</PRE>
+<SCRIPT>
+              function transitionLeft(no) {
+                document.getElementById('transitions-box-' + no).className = 'left';
+              }
+              function transitionRight(no) {
+                document.getElementById('transitions-box-' + no).className = 'right';
+              }
+            </SCRIPT>
+</SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>变换 - Transforms</H1></HEADER><SECTION><info>鼠标悬停在下面红色区域:            </info>
+<STYLE>
+              #threed-example {
+                margin: 50px 20px; 
+                -webkit-transform: rotateZ(5deg);
+                -webkit-transition: -webkit-transform 2s ease-in-out;
+              }
+              #threed-example:hover {
+                -webkit-transform: rotateZ(-5deg);
+              }
+            </STYLE>
+<PRE id="threed-example">-webkit-<B>transform</B>: <B>rotateY</B>(45deg);            
+-webkit-transform: <B>scaleX</B>(25deg);            
+-webkit-transform: <B>translate3d</B>(0, 0, 90deg);            
+-webkit-transform: <B>perspective</B>(500px) 
+</PRE><PRE>#threed-example {
+  -webkit-transform: rotateZ(5deg);
+
+  -webkit-transition: -webkit-transform 2s ease-in-out;
+}
+#threed-example:hover {
+  -webkit-transform: rotateZ(-5deg);
+}
+</PRE><info>按下 
+<SPAN class="key">3</SPAN> 键!</info></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN> 
+<H1>动画效果</H1></HEADER><SECTION><PRE>@-webkit-<B>keyframes</B> <EM>pulse</EM> {
+ <B>from</B> {
+   opacity: 0.0;
+   font-size: 100%;
+ }
+ <B>to</B> {
+   opacity: 1.0;
+   font-size: 200%;
+ }
+}
+
+div {
+  -webkit-<B>animation-name</B>: <EM>pulse</EM>;
+  -webkit-<B>animation-duration</B>: 2s;
+  -webkit-<B>animation-iteration-count</B>: infinite;
+  -webkit-<B>animation-timing-function</B>: ease-in-out;
+  -webkit-<B>animation-direction</B>: alternate;
+}
+</PRE>
+<STYLE>
+              @-webkit-keyframes pulse {
+               from {
+                 opacity: 0.0;
+                 font-size: 100%;
+               }
+               to {
+                 opacity: 1.0;
+                 font-size: 200%;
+               }
+              }
+
+              #animation-example {
+                -webkit-animation-name: pulse;
+                -webkit-animation-duration: 2s;
+                -webkit-animation-iteration-count: infinite;
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-direction: alternate;
+              }
+            </STYLE>
+<example style="text-align: center; line-height: 100px; font-family: Arial;" id="animation-example">跳动! 
+           </example></SECTION></DIV>
+<DIV class="slide"><HEADER><SPAN class="css">CSS</SPAN></HEADER><SECTION>
+<UL class="summary">
+  <LI>布局排版              </LI>
+  <LI>视觉效果              </LI>
+  <LI>变换和动画 - Transitions, transforms and animations            
+</LI></UL></SECTION></DIV>
+<DIV class="slide"><SECTION class="center">            HTML5 ~=            <SPAN 
+class="html">HTML</SPAN>            +            <SPAN class="css">CSS</SPAN>    
+        +            <SPAN class="js">JS APIs</SPAN>
+<P style="font-size: 20px;">              HTML5 <EM 
+class="stroke">=</EM>下一代Web开发的新特征            </P></SECTION></DIV></DIV> <!-- slides --></DIV> 
+<!-- presentation -->
+<SCRIPT>
+      var currentSlideNo;
+      var notesOn = false;
+      var slides = document.getElementsByClassName('slide');
+      var touchStartX = 0;
+
+      // var slide_hash = window.location.hash.replace(/#/, '');
+      // if (slide_hash) {
+      //   for (var i = 0, len = slides.length; i < len; i++) {
+      //     if (slides[i].id == slide_hash) {
+      //       currentSlideNo = i;
+      //       updateSlideClasses(); 
+      //     }
+      //   }
+      // }
+      
+      function initialize() {
+        if (window.location.hash != "") {
+          currentSlideNo = Number(window.location.hash.replace('#slide', ''));
+        } else {
+          currentSlideNo = 1;
+        }
+
+        document.addEventListener('keydown', handleBodyKeyDown, false);
+
+        var els = slides;
+        for (var i = 0, el; el = els[i]; i++) {
+          el.className = 'slide far-future';
+        }
+        updateSlideClasses(); 
+        addTouchListeners();
+      }
+      
+      function getSlideEl(slideNo) {
+        if (slideNo > 0) {
+          return slides[slideNo - 1];
+        } else {
+          return null;
+        }
+      }
+      
+      function getSlideTitle(slideNo) {
+        var el = getSlideEl(slideNo);
+        
+        if (el) {
+          return el.getElementsByTagName('header')[0].innerHTML;
+        } else {
+          return null;
+        }
+      }
+      
+      function changeSlideElClass(slideNo, className) {
+        var el = getSlideEl(slideNo);
+        
+        if (el) {
+          el.className = 'slide ' + className;
+        }
+      }
+      
+      function updateSlideClasses() {
+        window.location.hash = "slide" + currentSlideNo;
+        changeSlideElClass(currentSlideNo - 2, 'far-past');
+        changeSlideElClass(currentSlideNo - 1, 'past');
+        changeSlideElClass(currentSlideNo, 'current');
+        changeSlideElClass(currentSlideNo + 1, 'future');
+        changeSlideElClass(currentSlideNo + 2, 'far-future');                
+      }
+      
+      function nextSlide() {
+        if (currentSlideNo < slides.length) {
+          currentSlideNo++;
+        }
+        
+        updateSlideClasses();
+      }
+      
+      function prevSlide() {
+        if (currentSlideNo > 1) {
+          currentSlideNo--;
+        }
+        updateSlideClasses();
+      }
+      
+      function switch3D() {
+        if (document.body.className.indexOf('three-d') == -1) {
+          document.getElementsByClassName('presentation')[0].style.webkitPerspective = '1000px';
+
+          document.body.className += ' three-d';
+        } else {
+          window.setTimeout("document.getElementsByClassName('presentation')[0].style.webkitPerspective = '0';", 2000);
+          document.body.className = document.body.className.replace(/three-d/, '');
+        }
+      }
+      
+      function showNotes() {
+        var notes = document.querySelectorAll('.notes');
+        for (var i = 0, len = notes.length; i < len; i++) {
+          notes[i].style.display = (notesOn) ? 'none':'block';
+        }
+        notesOn = (notesOn) ? false:true;
+      }
+      
+      function handleBodyKeyDown(event) {
+        switch (event.keyCode) {
+          case 37: // left arrow
+            prevSlide();
+            break;
+          case 39: // right arrow
+          // case 32: // space
+            nextSlide();
+            break;
+          case 51: // 3
+            switch3D();          
+            break;
+          case 50: // 2
+            showNotes();          
+            break;
+        }
+      }
+      
+      function addTouchListeners() {
+        document.addEventListener('touchstart', function(e) {
+          touchStartX = e.touches[0].pageX;
+        }, false);
+        document.addEventListener('touchend', function(e) {
+          var pixelsMoved = touchStartX - e.changedTouches[0].pageX;
+          var SWIPE_SIZE = 150;
+          if (pixelsMoved > SWIPE_SIZE) {
+            nextSlide();
+          }
+          else if (pixelsMoved < -SWIPE_SIZE) {
+            prevSlide();
+          }
+        }, false);
+      }
+      
+      initialize();
+    </SCRIPT>
+
+<SCRIPT type="text/aavascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl./" : "http://www./");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </SCRIPT>
+
+<SCRIPT type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-15028909-2");
+    pageTracker._trackPageview();
+    } catch(err) {}</SCRIPT>
+</BODY></HTML>

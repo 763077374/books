@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <canvas id="demoCanvas" width="1000" height="600">
+        <p>爷，你还在上个世纪吧，现在都html5了，您还在ie6时代？</p>
+    </canvas>
+    <!---下面将演示一种绘制图片的demo--->
+    
+    <script type="text/javascript">
+
+        //第一步：获取canvas元素
+        var canvasDom = document.getElementById("demoCanvas");
+        //第二步：获取上下文
+        var context = canvasDom.getContext('2d');
+
+        var img = new Image();
+        img.src = "Content/me.jpg";
+
+        img.onload = function (e) {
+            for (var i = 1; i < 7; i++) {
+                context.drawImage(img, i * 20, i * 20, i*50, i*50);
+            }
+
+        };
+
+    </script>
+</body>
+</html>

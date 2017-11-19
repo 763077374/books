@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化开发演变 - 维护和扩展</title>
+</head>
+<body>
+<input type="text" id="x">
+<select name="" id="opt">
+    <option value="0">+</option>
+    <option value="1">-</option>
+    <option value="2">*</option>
+    <option value="3">/</option>
+    <option value="4">%</option>
+</select>
+<input type="text" id="y">
+<button id="cal">=</button>
+<input type="text" id="result">
+<script>
+       //传递参数cal
+    var calculator = (function(cal) {
+        //加法
+        function add(x, y) {
+            return parseInt(x) + parseInt(y);
+        }
+        // 减法
+        function subtract(x, y) {
+            return parseInt(x) - parseInt(y);
+        }
+        //乘法
+        function multiply(x, y) {
+            return parseInt(x) * parseInt(y);
+        }
+        //除法
+        function divide(x, y) {
+            return parseInt(x) / parseInt(y);
+        }
+        cal.add = add;
+        cal.subtract = subtract;
+        cal.multiply = multiply;
+        cal.divide = divide;
+
+        return cal;
+    })(calculator || {});
+
+    // 从代码上来看：下面的 calculator 已经把上面的 calculator 给覆盖掉了
+    // 注意：在进行扩展的时候，优先查找要扩展的对象是否已存在
+    // 如果已存在，就使用已经存在的
+    // 如果不存在，就创建一个新的
+    // 最大的好处：加载的时候不用考虑顺序了
+    var calculator = (function(cal) {
+        //取余方法
+        cal.mod = function(x, y) {
+            return x % y;
+        }
+        return cal;
+
+    })(calculator || {});
+
+    // 获取所有的 dom 元素
+    var oX = document.getElementById('x');
+    var oY = document.getElementById('y');
+    var oOpt = document.getElementById('opt');
+    var oCal = document.getElementById('cal');
+    var oResult = document.getElementById('result');
+    //为等号按钮添加单击事件，当按钮被点击时调用此方法
+    oCal.addEventListener('click', function() {
+        var x = oX.value.trim();
+        var y = oY.value.trim();
+        var opt = oOpt.value;
+        var result = 0;
+        switch (opt) {
+            case '0':
+                result = calculator.add(x, y);
+                break;
+            case '1':
+                result = calculator.subtract(x, y);
+                break;
+            case '2':
+                result = calculator.multiply(x, y);
+                break;
+            case '3':
+                result = calculator.divide(x, y);
+                break;
+            case '4':
+                result = calculator.mod(x, y);
+                break;
+        }
+        oResult.value = result;
+    })
+</script>
+</body>
+</html>

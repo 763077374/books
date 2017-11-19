@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <script src="Scripts/jquery-1.5.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSendMsg").click(function () {
+                for (var i = 0; i < window.parent.frames.length; i++) {
+                    if (window.parent.frames[i] != window) {
+                        window.parent.frames[i].postMessage($("#demo").val(), "http://localhost:55785/13.1frame%20main.htm");
+                    }
+                }
+
+                //window.postMessage($("#demo").val(), "http://localhost:55785/13.1frame%20main.htm");
+            });
+
+            $("#result").append(window.location.href);
+            window.addEventListener("message", function (ev) {
+
+                if (ev.source.name == window.name) {
+                    return;
+                }
+
+                $("#result").append("<p> from:" + ev.origin + "----message:" + ev.data + "</p>");
+                //ev.source.postMessage("Hello,这里是：" + ev.source.location, '*');
+            });
+        });
+
+      
+    </script>
+</head>
+    <body>
+        <h3>这里是2 页面</h3>
+        <input type="text" id="demo" name="demo"/>
+        <input type="button" value="发送消息" id="btnSendMsg"/>
+        <hr/>
+        <div id="result">
+            
+        </div>
+        <a href="13.跨文档消息传输.htm">13.跨文档消息传输.htm</a>
+    </body>
+</html>

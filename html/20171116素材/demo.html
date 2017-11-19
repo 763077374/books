@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{ padding: 0; margin: 0}
+		#box{ width: 600px; height:300px; border: 1px red solid; margin: 100px auto; position: relative;}
+		#box ul li{ list-style: none; float: left; width: 200px; height: 150px}
+		#box ul li img{ width: 100%; height: 100%}
+		.mark{ width: 600px; height: 300px; background: #000; opacity: 0.5}
+		.pic{ width: 400px; height: 200px; position: absolute;left:50%; top: 50%; margin-left: -200px; margin-top: -100px}
+		.close{ width: 20px; height: 20px; background: red; text-align: center; position: absolute; left: 500px; top: 50px; cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div id='box'>
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script>
+		var box=document.getElementById('box');
+		var lis=document.getElementsByTagName('li');
+		//遍历所有的li 
+		for(var i=0;i<lis.length;i++)
+		{
+			lis[i].onclick=function()
+			{
+				//创建一个新的div，取名为mark,设置样式,追加到box
+				var newDiv=document.createElement('div');
+					newDiv.className='mark';
+					box.appendChild(newDiv);
+
+				//创建一个新的img,取名为pic,设置样式并获取src属性，newImg追加到box
+				var newImg=document.createElement('img');
+					newImg.className='pic';
+					newImg.src=this.firstChild.getAttribute('src');
+					box.appendChild(newImg);
+
+				//创建一个新的span,取名为close,内容为X，把span追加到box
+				var span=document.createElement('span');
+					span.className='close';
+					span.innerHTML='X';
+					box.appendChild(span);
+
+				//点击X，关闭newDiv、newImg、span  父节点.removeChild(子节点)
+				span.onclick=function()
+				{
+					box.removeChild(newDiv);
+					box.removeChild(newImg);
+					box.removeChild(span);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

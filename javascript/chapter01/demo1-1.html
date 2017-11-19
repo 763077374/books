@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模块化开发演变 - 全局函数</title>
+</head>
+<body>
+  <input type="text" id="x">
+  <select name="" id="opt">
+    <option value="0">+</option>
+    <option value="1">-</option>
+    <option value="2">*</option>
+    <option value="3">/</option>
+  </select>
+  <input type="text" id="y">
+  <button id="cal">=</button>
+  <input type="text" id="result">
+  <script>
+
+       //定义用于计算的函数
+        function add(x, y) {
+          return parseInt(x) + parseInt(y);
+        }
+
+        function subtract(x, y) {
+          return parseInt(x) - parseInt(y);
+        }
+
+        function multiply(x, y) {
+          return parseInt(x) * parseInt(y);
+        }
+
+        function divide(x, y) {
+          return parseInt(x) / parseInt(y);
+        }
+       // 获取所有的 dom 元素
+       var oX = document.getElementById('x');//第一个数值
+       var oY = document.getElementById('y');//第二个数值
+       var oOpt = document.getElementById('opt');//获取运算符
+       var oCal = document.getElementById('cal');//获取等号按钮
+       var oResult = document.getElementById('result')//结果数值
+//为等号按钮添加单击事件，当按钮被点击时调用此方法
+  oCal.addEventListener('click', function() {
+    var x = oX.value.trim();
+    var y = oY.value.trim();
+    var opt = oOpt.value;
+
+    var result = 0;
+    switch (opt) {
+      case '0':
+        result = add(x, y);//加
+        break;
+      case '1':
+        result = subtract(x, y);//减
+        break;
+      case '2':
+        result = multiply(x, y);//乘
+        break;
+      case '3':
+        result = divide(x, y);//除
+        break;
+    }
+    oResult.value = result;
+
+  })
+  </script>
+</body>
+
+</html>

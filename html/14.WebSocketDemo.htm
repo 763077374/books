@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+<script type="text/javascript" src="Scripts/jquery-1.5.1.js"></script>
+    <script type="text/javascript">
+
+        // 创建一个Socket实例
+        var socket = new WebSocket('ws://localhost:8181');
+
+        // 打开Socket
+        socket.onopen = function (event) {
+
+            // 发送一个初始化消息
+            //socket.send('I am the client and I\'m listening!');
+
+            // 监听消息
+            socket.onmessage = function (event) {
+                $("#result").text(event.data +"<br />");
+            };
+
+
+            // 监听Socket的关闭
+            socket.onclose = function (event) {
+                console.log('Client notified socket has closed', event);
+            };
+
+            // 关闭Socket.... 
+            //socket.close() 
+        };
+
+
+        function sendData() {
+            var data = $("#demoData").val();
+            socket.send(data);
+        }
+    </script>
+</head>
+    <body>
+        <input type="text" name="demoData" id="demoData"/>
+        <input type="button" id="btnSend" value="发送" onclick="sendData();"/>
+        <hr/>
+        <div id="result">
+            
+        </div>
+    </body>
+</html>
